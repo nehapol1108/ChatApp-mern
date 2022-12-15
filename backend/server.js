@@ -18,12 +18,18 @@ app.use(express.json()); //to accept json data
 app.use('/api/user',userRoutes);
 app.use('/api/chat',chatRoutes);
 app.use('/api/message',messageRoutes);
+app.use('/',(req,res)=>{
+    res.json("welcome to the server")
+});
 
 
 // -------------------Deployment-------------
 
 const __dirname1 = path.resolve();
 console.log(__dirname1);
+
+// console.log(path.resolve(__dirname1,"frontend","build","index.html"));
+
 if(process.env.NODE_ENV==="production"){
     app.use(express.static(path.join(__dirname1,"/frontend/build")));
     app.get("*",(req,res)=>{
