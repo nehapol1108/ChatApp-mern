@@ -7,6 +7,9 @@ const chatRoutes = require('./routes/chatRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const {notFound,errorHandler} = require("./middlewares/errorMiddleware");
 const path = require("path");
+const mongoose = require("mongoose");
+
+mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
