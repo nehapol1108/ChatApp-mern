@@ -104,7 +104,7 @@ const Signup = () => {
             });
             localStorage.setItem('userInfo',JSON.stringify(data));
             setpicLoading(false);
-            history.push("/chat");
+            history.push("/chats");
 
         }catch(err){
             toast({
