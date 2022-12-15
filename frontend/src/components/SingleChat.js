@@ -12,7 +12,7 @@ import ScrollableChat from './ScrollableChat';
 import io from "socket.io-client"
 import Lottie from 'react-lottie'
 import animationData from "../animations/typing.json";
-const ENDPOINT="https://mern-chat-app-api.onrender.com";
+const ENDPOINT="https://mern-chat-website.onrender.com";
 var socket,selectedChatCompare;
 const SingleChat = ({fetchAgain,setFetchAgain}) => {
     const {user,selectedChat,setSelectedChat,notification,setNotification} =ChatState();
