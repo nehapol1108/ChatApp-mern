@@ -18,11 +18,13 @@ const protect = asyncHandler(async(req,res,next)=>{
             next();
         }catch(error){
             res.status(401);
+            console.log("error in generating token");
             throw new Error("Not authorized , token failed");
         }    
     }
     if(!token){
         res.status(401);
+        console.log("error in generating token, failed")
         throw new Error("Not authorized , token failed");
     }
 })
