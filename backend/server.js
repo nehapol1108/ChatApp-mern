@@ -8,12 +8,15 @@ const messageRoutes = require('./routes/messageRoutes');
 const {notFound,errorHandler} = require("./middlewares/errorMiddleware");
 const path = require("path");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
-
+app.use(cors({
+    origin: "http://localhost:3000"
+}))
 app.use(express.json()); //to accept json data
 app.use('/api/user',userRoutes);
 app.use('/api/chat',chatRoutes);
@@ -52,7 +55,8 @@ const io = require('socket.io')(server,{
     pingTimeout:60000, //the amount of time it will wait while being inactive here it is 60s  so after
                       //60s it will close the connection to save the bandwidth
     cors:{ //it takes cors to avoid cross origin errors while building our app
-        origin:"https://mern-chat-app-api.onrender.com",
+        origin:"http://localhost:3000",
+        methods: ["GET", "POST"]
     },
 });
 io.on("connection",(socket)=>{
