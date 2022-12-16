@@ -38,7 +38,7 @@ const MyChats = ({fetchAgain}) => {
   }, [fetchAgain])
   return (
     <Box
-    display={{ base: selectedChat ? "none" : "flex", md: "flex" }}
+    d={{ base: selectedChat ? "none" : "flex", md: "flex" }}
     flexDir="column"
     alignItems="center"
     p={3}
@@ -61,7 +61,7 @@ const MyChats = ({fetchAgain}) => {
         My chats
         <GroupChatModal>
         <Button
-            display="flex"
+            d="flex"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
           >
