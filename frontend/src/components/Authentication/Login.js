@@ -20,7 +20,7 @@ const Login = () => {
         setLoading(true);
         if(!email || !password){
             toast({
-                title: 'Please Select an Image',
+                title: 'Please fill all the fields',
                 status: 'warning',
                 duration: 5000,
                 isClosable: true,
