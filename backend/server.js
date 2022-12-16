@@ -8,14 +8,14 @@ const messageRoutes = require('./routes/messageRoutes');
 const {notFound,errorHandler} = require("./middlewares/errorMiddleware");
 const path = require("path");
 const mongoose = require("mongoose");
-const cors = require("cors");
+var cors = require("cors");
 
 mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "https://mern-chat-website.onrender.com"
 }))
 app.use(express.json()); //to accept json data
 app.use('/api/user',userRoutes);
@@ -55,9 +55,11 @@ const io = require('socket.io')(server,{
     pingTimeout:60000, //the amount of time it will wait while being inactive here it is 60s  so after
                       //60s it will close the connection to save the bandwidth
     cors:{ //it takes cors to avoid cross origin errors while building our app
-        origin:"http://localhost:3000",
+        origin:"https://mern-chat-website.onrender.com",
         methods: ["GET", "POST"]
     },
+    credentials: true,
+    allowEIO3: true
 });
 io.on("connection",(socket)=>{
     console.log("connected to socket.io");
