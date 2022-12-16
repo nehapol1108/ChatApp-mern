@@ -49,6 +49,7 @@ const Login = () => {
             });
             localStorage.setItem('userInfo',JSON.stringify(data));
             setLoading(false);
+            
             history.push("/chats");
 
         }catch(err){
@@ -60,6 +61,7 @@ const Login = () => {
                 isClosable: true,
                 position: "bottom",
             });
+            console.log(err.message);
             setLoading(false);
         }
 

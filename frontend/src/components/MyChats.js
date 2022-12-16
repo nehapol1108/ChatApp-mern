@@ -30,6 +30,7 @@ const MyChats = ({fetchAgain}) => {
         isClosable: true,
         position: "bottom-left",
       });
+      console.log("mychats" + error.message);
     }
   };
   useEffect(() => {

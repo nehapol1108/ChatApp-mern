@@ -63,6 +63,7 @@ const SideDrawer = () => {
           isClosable: true,
           position: "bottom-left",
         });
+        console.log("sidedrawee" + err.message);
         return;
       }
   }
