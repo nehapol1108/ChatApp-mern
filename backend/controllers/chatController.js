@@ -39,6 +39,7 @@ const accessChat = asyncHandler(async(req,res)=>{
             const FullChat = await Chat.findOne({_id:createdChat._id}).populate("users","-password");
             res.status(200).send(FullChat);
         }catch(err){
+            console.log("error in access chats");
             throw new Error(err.message);
         }
     }
@@ -58,9 +59,11 @@ const fetchChats = asyncHandler(async(req,res)=>{
                 path:"latestMessage.sender",
                 select:"name pic email",
             }) 
+           
             res.status(200).send(results);
         });
     }catch(err){
+        console.log("error while fetching chats ");
         res.status(400);
         throw new Error(err.message);
     }
@@ -91,6 +94,7 @@ const createGroupChat = asyncHandler(async(req,res)=>{
         res.status(200).json(fullGroupChat);
    }catch(error){
         res.status(400);
+        console.log("error in create group chat");
         throw new Error(err.message);
    }
 });
@@ -110,6 +114,7 @@ const renameGroup = asyncHandler(async(req,res)=>{
 
    if(!updatedChat){
         res.status(404);
+        console.log("chat not found");
         throw new Error("Chat not found");
    }else{
         res.json(updatedChat);
@@ -129,6 +134,7 @@ const addToGroup = asyncHandler(async(req,res)=>{
 
     if(!added){
         res.status(404);
+        console.log("error in access chats in add to group");
         throw new Error("Chat not found");
    }else{
         res.json(added);
@@ -147,6 +153,7 @@ const removeFromGroup = asyncHandler(async(req,res)=>{
  
      if(!removed){
          res.status(404);
+         console.log("error remove from group");
          throw new Error("Chat not found");
     }else{
          res.json(removed);

@@ -1,5 +1,6 @@
 const notFound = (req,res,next)=>{
     const error = new Error(`Not Found - ${req.originalUrl}`);
+    console.log(error + " errormiddleware");
     res.status(404);
     next(error);
 };
@@ -7,6 +8,7 @@ const notFound = (req,res,next)=>{
 const errorHandler = (err,req,res,next) =>{
     const statusCode = res.statusCode ===200?500 : res.statusCode;
     res.status(statusCode);
+    console.log(err + " errormiddleware with statuscode" + statusCode)
     res.json({
         messgae:err.messgae,
         stack: process.env.NODE_ENV ==="production" ? null:err.stack,

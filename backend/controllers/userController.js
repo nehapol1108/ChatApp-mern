@@ -3,6 +3,7 @@ const User = require('../Models/userModel');
 const generateToken = require("../config/generateToken");
 
 const registerUser = asyncHandler(async(req,res)=>{
+    
     const {name,email,password,pic} = req.body;
     if(!name || !email || !password){
         res.status(400);
@@ -25,8 +26,10 @@ const registerUser = asyncHandler(async(req,res)=>{
             pic:user.pic,
             token:generateToken(user._id)
         })
+        console.log("user registered successfully");
     }else{
         res.status(400);
+        console.log("Failed to create the user");
         throw new Error("Failed to create the user");
     }
 });
@@ -41,8 +44,10 @@ const authUser = asyncHandler(async(req,res)=>{
             pic:user.pic,
             token:generateToken(user._id)
         })
+        console.log("user validated " + user);
     }else{
         res.status(400);
+        console.log("Invalid email or password");
         throw new Error("Invalid email or password");
     }
 });
@@ -59,8 +64,10 @@ const allUsers = asyncHandler(async(req,res)=>{
     // console.log(keyword);
 
     //we need to find user except the current one in the database with the searched name or email
+   
     const users = await User.find(keyword).find({_id:{$ne:req.user._id}});
     res.send(users);
+    console.log("users searched" + users);
 
 });
 module.exports={registerUser,authUser,allUsers};

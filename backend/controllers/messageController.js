@@ -29,6 +29,7 @@ const sendMessage = asyncHandler(async(req,res)=>{
 
     }catch(error){
         res.status(400);
+        console.log("error in send Message");
         throw new Error(error.message);
     }
 });
@@ -41,6 +42,8 @@ const allMessages =asyncHandler(async(req,res)=>{
         res.json(messages);
     } catch (error) {
         res.status(400);
+        console.log("error in all Message");
+
         throw new Error(error.message);
     }
 })
