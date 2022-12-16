@@ -14,9 +14,9 @@ mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
-app.use(cors({
-    origin: "https://mern-chat-app-api.onrender.com"
-}))
+// app.use(cors({
+//     origin: "https://mern-chat-app-api.onrender.com"
+// }))
 app.use(express.json()); //to accept json data
 app.use('/api/user',userRoutes);
 app.use('/api/chat',chatRoutes);
