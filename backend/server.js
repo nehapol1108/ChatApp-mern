@@ -10,11 +10,11 @@ const path = require("path");
 const mongoose = require("mongoose");
 var cors = require("cors");
 
-// mongoose.set("strictQuery", false);
+mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
-// app.use(cors());
+app.use(cors());
 // app.use(cors({
 //     origin: "https://mern-chat-app-api.onrender.com"
 // }))
