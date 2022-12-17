@@ -10,11 +10,11 @@ const path = require("path");
 const mongoose = require("mongoose");
 var cors = require("cors");
 
-mongoose.set("strictQuery", false);
+// mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
-app.use(cors());
+// app.use(cors());
 // app.use(cors({
 //     origin: "https://mern-chat-app-api.onrender.com"
 // }))
@@ -56,7 +56,7 @@ const io = require('socket.io')(server,{
     pingTimeout:60000, //the amount of time it will wait while being inactive here it is 60s  so after
                       //60s it will close the connection to save the bandwidth
     cors:{ //it takes cors to avoid cross origin errors while building our app
-        origin:"*",
+        origin:"http://localhost:3000",
     },
     
 });
