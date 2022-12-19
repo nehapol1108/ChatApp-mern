@@ -8,13 +8,13 @@ const messageRoutes = require('./routes/messageRoutes');
 const {notFound,errorHandler} = require("./middlewares/errorMiddleware");
 const path = require("path");
 const mongoose = require("mongoose");
-var cors = require("cors");
+// var cors = require("cors");
 
 mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
-app.use(cors());
+// app.use(cors());
 // app.use(cors({
 //     origin: "https://mern-chat-app-api.onrender.com"
 // }))
@@ -22,9 +22,9 @@ app.use(express.json()); //to accept json data
 app.use('/api/user',userRoutes);
 app.use('/api/chat',chatRoutes);
 app.use('/api/message',messageRoutes);
-app.use('/',(req,res)=>{
-    res.json("welcome to the server")
-});
+// app.use('/',(req,res)=>{
+//     res.json("welcome to the server")
+// });
 
 
 // -------------------Deployment-------------
@@ -33,7 +33,7 @@ const __dirname1 = path.resolve();
 console.log(__dirname1);
 
 // console.log(path.resolve(__dirname1,"frontend","build","index.html"));
-
+console.log(process.env.NODE_ENV)
 if(process.env.NODE_ENV==="production"){
     app.use(express.static(path.join(__dirname1,"/frontend/build")));
     app.get("*",(req,res)=>{
