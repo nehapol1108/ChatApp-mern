@@ -8,13 +8,17 @@ const messageRoutes = require('./routes/messageRoutes');
 const {notFound,errorHandler} = require("./middlewares/errorMiddleware");
 const path = require("path");
 const mongoose = require("mongoose");
-// var cors = require("cors");
+var cors = require("cors");
 
 mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
-// app.use(cors());
+app.use(cors(
+    {
+        origin:["http://localhost:3000","https://mern-chat-website.onrender.com"]
+    }
+));
 // app.use(cors({
 //     origin: "https://mern-chat-app-api.onrender.com"
 // }))
