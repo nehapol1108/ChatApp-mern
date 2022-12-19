@@ -49,7 +49,7 @@ const Login = () => {
             });
             localStorage.setItem('userInfo',JSON.stringify(data));
             setLoading(false);
-            
+
             history.push("/chats");
 
         }catch(err){
@@ -111,6 +111,7 @@ const Login = () => {
         onClick={()=>{
             setEmail("guest@example.com");
             setPassword("123456");
+            submitHandler();
         }}
         >
            Get Guest User Credentials
