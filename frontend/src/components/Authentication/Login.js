@@ -48,8 +48,8 @@ const Login = () => {
                 position: "bottom",
             });
             localStorage.setItem('userInfo',JSON.stringify(data));
+            // console.log(JSON.stringify(data));
             setLoading(false);
-            
             history.push("/chats");
 
         }catch(err){

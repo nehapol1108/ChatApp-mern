@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "server": "node backend/server.js",
     "start": "nodemon backend/server.js"
   },
   "author": "neha pol",
