@@ -14,10 +14,16 @@ mongoose.set("strictQuery", false);
 dotenv.config();
 connectDB();
 const app = express();
-// app.use(cors());
-app.use(cors({
-    origin: ["http://localhost:3000","https://mern-chat-app-api.onrender.com"]
-}))
+app.use(cors(
+    {
+        origin:["https://mern-chat-website.onrender.com","http://localhost:3000"]
+    }
+));
+app.use(express.urlencoded({extended:false}));
+
+// app.use(cors({
+//     origin: "https://mern-chat-app-api.onrender.com"
+// }))
 app.use(express.json()); //to accept json data
 app.use('/api/user',userRoutes);
 app.use('/api/chat',chatRoutes);
@@ -58,7 +64,7 @@ const io = require('socket.io')(server,{
     cors:{ //it takes cors to avoid cross origin errors while building our app
         origin:["http://localhost:3000", "https://mern-chat-website.onrender.com"],
     },
-    
+
 });
 io.on("connection",(socket)=>{
     console.log("connected to socket.io");
