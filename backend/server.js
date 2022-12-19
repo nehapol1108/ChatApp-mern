@@ -16,7 +16,7 @@ connectDB();
 const app = express();
 app.use(cors(
     {
-        origin:["http://localhost:3000","https://mern-chat-website.onrender.com"]
+        origin:["https://mern-chat-website.onrender.com","http://localhost:3000"]
     }
 ));
 app.use(express.urlencoded({extended:false}));
