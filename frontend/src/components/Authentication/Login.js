@@ -9,7 +9,7 @@ import axios from "axios";
 import {useHistory} from "react-router-dom"
 const Login = () => {
     const [email,setEmail] = useState();
-    const [password,setPassword] = useState(); 
+    const [password,setPassword] = useState();
     const [show,setshow] = useState(false);
     const [loading,setLoading] = useState(false);
     const toast = useToast();
@@ -50,6 +50,7 @@ const Login = () => {
             localStorage.setItem('userInfo',JSON.stringify(data));
             // console.log(JSON.stringify(data));
             setLoading(false);
+
             history.push("/chats");
 
         }catch(err){
@@ -111,6 +112,7 @@ const Login = () => {
         onClick={()=>{
             setEmail("guest@example.com");
             setPassword("123456");
+            submitHandler();
         }}
         >
            Get Guest User Credentials
